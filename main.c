@@ -56,6 +56,22 @@ int main(int argc, const char * argv[]) {
 	}
 	
 	printf("%d %d", placeHist[0], placeHist[1]);
+	
+	while(fscanf(fp, "%d &d &d", &pIndex, &age, &time)==3)
+    {
+    
+    	
+		for(i=0; i<5; i++)
+    	
+    		fscanf(fp, "%d", &placeHist[i]);
+    	
+		ifct_element = ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY]);
+		
+		ifctdb_addTail(ifct_element);
+		
+		//ifctele_printElement(ifct_element);
+		//age = ifctele_getage
+	}
     //1-3. FILE pointer close
     
    /*fclose(fp);
