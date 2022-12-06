@@ -97,3 +97,50 @@ char countryName[N_PLACE+1][MAX_PLACENAME] =
     "CapeTown",
     "Unrecognized"
 };
+
+typedef struct ifs_ele{
+	int index;//number
+	int age;//age
+	int infestedtime;//time
+	place_t place[N_HISTORY];//place[N_HISTORY]
+} ifs_ele_t;
+
+
+static ifs_ele_t ifsarray[20];
+static int ifs_cnt;
+
+void* ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY]);
+{
+	ifsarray[ifs_cnt].index = index;
+	ifsarray[ifs_cnt].age = age;
+	//..
+	
+	ifs_cnt++;
+	
+	return &ifsarray[ifs_cnt-1];
+}
+
+
+int ifctele_getHistPlaceIndex(void* obj, int index);
+
+unsigned int ifctele_getinfestedTime(void* obj);
+
+int ifctele_getAge(void* obj);
+{
+	ifs_ele_t* ptr = (ifs_ele_t*)obj;
+	
+	return ptr->age;
+}
+
+void ifctele_printElement(void* obj);
+{
+	ifs_ele_t* ptr = (ifs_ele_t*)obj;
+	
+	printf("Age : %i\n", ptr->age);
+}
+
+
+char* ifctele_getPlaceName(int placeIndex)
+{
+	return countryName[placeIndex];
+}

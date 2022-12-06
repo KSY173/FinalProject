@@ -52,11 +52,10 @@ int main(int argc, const char * argv[]) {
 		for(i=0; i<5; i++)
     	{
     		fscanf(fp, "%d", &placeHist[i]);
-    		break;
 		}
 	}
 	
-	printf("%d %d %d", pIndex, age, time);
+	printf("%d %d", placeHist[0], placeHist[1]);
     //1-3. FILE pointer close
     
    /*fclose(fp);
