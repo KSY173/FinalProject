@@ -45,27 +45,15 @@ int main(int argc, const char * argv[]) {
     
     //1-2. loading each patient informations
     
-    while(fscanf(fp, "%d &d &d", &pIndex, &age, &time)==3)
-    {
-    	int i;
-    	
-		for(i=0; i<5; i++)
-    	{
-    		fscanf(fp, "%d", &placeHist[i]);
-		}
-	}
-	
-	printf("%d %d", placeHist[0], placeHist[1]);
-	
 	while(fscanf(fp, "%d &d &d", &pIndex, &age, &time)==3)
     {
     
+    	int i;
     	
 		for(i=0; i<5; i++)
-    	
     		fscanf(fp, "%d", &placeHist[i]);
     	
-		ifct_element = ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY]);
+		ifct_element = ifctele_genElement(pIndex, age, time, placeHist[i]);
 		
 		ifctdb_addTail(ifct_element);
 		
@@ -74,13 +62,13 @@ int main(int argc, const char * argv[]) {
 	}
     //1-3. FILE pointer close
     
-   /*fclose(fp);
+   fclose(fp);
     do {
         printf("\n=============== INFECTION PATH MANAGEMENT PROGRAM (No. of patients : %i) =============\n", ifctdb_len());
-        printf("1. Print details about a patient.\n");                      //MENU_PATIENT
-        printf("2. Print list of patients infected at a place.\n");        //MENU_PLACE
-        printf("3. Print list of patients in a range of age.\n");          //MENU_AGE
-        printf("4. Track the root of the infection\n");                     //MENU_TRACK
+        printf("1. Print details about a patient.\n"); //환자 번호 나이 감염 확인 일자 최근 5개 이동 장소                      //MENU_PATIENT
+        printf("2. Print list of patients infected at a place.\n");        //MENU_PLACE 장소에서 발병 확인이 된 환자 모두의 정보 출력 
+        printf("3. Print list of patients in a range of age.\n");          //MENU_AGE 최소 최대값 입력 받고 그 나이 환자 모두의 정보 출력 
+        printf("4. Track the root of the infection\n");                     //MENU_TRACK 지정된 환자를 시작으로 전차자와 감염당한 시점 및 장소를 순차적 출력, 최초 전파자 최종 출력 
         printf("0. Exit.\n");                                               //MENU_EXIT
         printf("=============== ------------------------------------------------------- =============\n\n");
         
@@ -95,7 +83,7 @@ int main(int argc, const char * argv[]) {
                 break;
                 
             case MENU_PATIENT:
-                
+                printf("age : %i\n", ifctele_getage(ifct_element)); 
                 break;
                 
             case MENU_PLACE:
@@ -116,7 +104,7 @@ int main(int argc, const char * argv[]) {
         }
     
     } while(menu_selection != 0);
-    */
+    
     
     return 0;
 }

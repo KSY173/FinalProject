@@ -106,18 +106,18 @@ typedef struct ifs_ele{
 } ifs_ele_t;
 
 
-static ifs_ele_t ifsarray[20];
-static int ifs_cnt;
-
-void* ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY]);
+void* ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY])
 {
-	ifsarray[ifs_cnt].index = index;
-	ifsarray[ifs_cnt].age = age;
-	//..
+	ifs_ele_t* ptr;
 	
-	ifs_cnt++;
+	ptr = (int*)malloc(100*sizeof(struct ifs_ele));
+	ptr->index = index;
+	ptr->age = age;
+	ptr->infestedtime = detected_time;
+	ptr->place[N_HISTORY] = history_place[N_HISTORY];
 	
-	return &ifsarray[ifs_cnt-1];
+	
+	return ptr;
 }
 
 
@@ -125,14 +125,16 @@ int ifctele_getHistPlaceIndex(void* obj, int index);
 
 unsigned int ifctele_getinfestedTime(void* obj);
 
-int ifctele_getAge(void* obj);
+//char* ifctele_getPlaceName(int placeIndex);
+
+int ifctele_getAge(void* obj)
 {
 	ifs_ele_t* ptr = (ifs_ele_t*)obj;
 	
 	return ptr->age;
 }
 
-void ifctele_printElement(void* obj);
+void ifctele_printElement(void* obj)
 {
 	ifs_ele_t* ptr = (ifs_ele_t*)obj;
 	
