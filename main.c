@@ -60,6 +60,7 @@ int main(int argc, const char * argv[]) {
 		//ifctele_printElement(ifct_element);
 		//age = ifctele_getage
 	}
+	
     //1-3. FILE pointer close
     
    fclose(fp);
@@ -75,6 +76,7 @@ int main(int argc, const char * argv[]) {
         printf("Select a menu :");
         scanf("%d", &menu_selection);
         fflush(stdin);
+        int Maxage, minage;
         
         switch(menu_selection)
         {
@@ -83,7 +85,10 @@ int main(int argc, const char * argv[]) {
                 break;
                 
             case MENU_PATIENT:
-                printf("age : %i\n", ifctele_getage(ifct_element)); 
+            	printf("")
+            	printf("patient number : %d\n", );
+                printf("age : %i\n", ifctele_getAge(ifct_element)); 
+                printf("infected time : %d\n");
                 break;
                 
             case MENU_PLACE:
@@ -91,6 +96,11 @@ int main(int argc, const char * argv[]) {
                 break;
                 
             case MENU_AGE:
+            	
+                printf("Max age: ");
+                scanf("%d", &Maxage);
+                printf("Min age: ");
+                scanf("%d", &minage);
                 
                 break;
                 
