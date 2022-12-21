@@ -110,7 +110,7 @@ void* ifctele_genElement(int index, int age, unsigned int detected_time, int his
 {
 	ifs_ele_t* ptr;
 	
-	ptr = (int*)malloc(100*sizeof(struct ifs_ele));
+	//ptr = (int*)malloc(100*sizeof(struct ifs_ele));
 	ptr->index = index;
 	ptr->age = age;
 	ptr->infestedtime = detected_time;
@@ -138,6 +138,8 @@ void ifctele_printElement(void* obj)
 	ifs_ele_t* ptr = (ifs_ele_t*)obj;
 	
 	printf("Age : %i\n", ptr->age);
+	printf("Infested time : %i\n", ptr->infestedtime);
+	printf("Place history : %i->%i->%i->%i->%i", ptr->place[N_HISTORY]);
 }
 
 

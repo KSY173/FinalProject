@@ -53,7 +53,7 @@ int main(int argc, const char * argv[]) {
 		for(i=0; i<5; i++)
     		fscanf(fp, "%d", &placeHist[i]);
     	
-		ifct_element = ifctele_genElement(pIndex, age, time, placeHist[i]);
+		//ifct_element = ifctele_genElement(pIndex, age, time, placeHist[N_HISTORY]);
 		
 		ifctdb_addTail(ifct_element);
 		
@@ -85,10 +85,14 @@ int main(int argc, const char * argv[]) {
                 break;
                 
             case MENU_PATIENT:
-            	printf("")
-            	printf("patient number : %d\n", );
+            	printf("patient number :");
+            	scanf("%d\n", &pIndex);
+            	
+            	printf("patient number : %d\n", pIndex);
                 printf("age : %i\n", ifctele_getAge(ifct_element)); 
-                printf("infected time : %d\n");
+                //printf("infected time : %d\n", ifctele_getinfestedTime(ifct_element));
+                //printf("place history: %d -> %d -> %d -> %d -> %d", ifctele_getHistPlaceIndex(ifct_element, pIndex));
+                
                 break;
                 
             case MENU_PLACE:
